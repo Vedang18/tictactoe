@@ -1,0 +1,15 @@
+<h1>
+  {{title}}
+</h1>
+<div *ngIf="!selectedPlayer">
+Select your symbol!!!<br/>
+<button (click)="onSelectPlayer(crossPlayer)">{{crossPlayer.playerName}}</button>
+<button (click)="onSelectPlayer(circlePlayer)">{{circlePlayer.playerName}}</button>
+</div>
+<div *ngIf="selectedPlayer">
+  <button (click)="reset()">Reset</button>
+  <br/> Selected Symbol is {{selectedPlayer.playerName}}
+  <br/>
+  <app-board [boardData]="board" [selectedPlayer]="selectedPlayer" [canInteract]="canInteract()"></app-board>
+  <div *ngIf="winner">{{getPlayerFromNumber(winner).playerName}} won! Click Reset to play another game!</div>
+</div>
