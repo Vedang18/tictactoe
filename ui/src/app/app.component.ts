@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   private subscription: any;
   // public messages: Observable<Message>;
 
-  constructor(private stompService: StompService){}
+  constructor(private stompService: StompService) { }
 
   onSelectPlayer(player: Player): void {
     this.selectedPlayer = player;
@@ -63,21 +63,21 @@ export class AppComponent implements OnInit {
 
   intializeBoard(): void {
     this.board = [];
-    this.board.push([0,0,0]);
-    this.board.push([0,0,0]);
-    this.board.push([0,0,0]);
+    this.board.push([0, 0, 0]);
+    this.board.push([0, 0, 0]);
+    this.board.push([0, 0, 0]);
   }
 
   configureStomp(): void {
     this.stompService.configure({
-      host:'http://192.168.3.97:8080/game',
-      debug:true,
-      queue:{'init':false},
+      host: 'http://localhost:8080/game',
+      debug: true,
+      queue: { 'init': false },
     });
   }
 
-  subscribe(){
-    if(this.subscribed){
+  subscribe() {
+    if (this.subscribed) {
       return;
     }
 
@@ -117,21 +117,21 @@ export class AppComponent implements OnInit {
   }
 
   canInteract(): boolean {
-    if(this.winner){
+    if (this.winner) {
       return false;
     }
-    if(this.turn == null){
+    if (this.turn == null) {
       return true;
-    } else if(this.turn == this.selectedPlayer.playerId){
+    } else if (this.turn == this.selectedPlayer.playerId) {
       return true;
     }
     return false;
   }
 
   getPlayerFromNumber(num: number): Player {
-    if(num === 1){
+    if (num === 1) {
       return this.circlePlayer;
-    } else if(num === 2){
+    } else if (num === 2) {
       return this.crossPlayer;
     }
     return null;

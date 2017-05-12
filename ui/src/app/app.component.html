@@ -2,12 +2,12 @@
   {{title}}
 </h1>
 <div *ngIf="!selectedPlayer">
-Select your symbol!!!<br/>
-<button (click)="onSelectPlayer(crossPlayer)">{{crossPlayer.playerName}}</button>
-<button (click)="onSelectPlayer(circlePlayer)">{{circlePlayer.playerName}}</button>
+  Select your symbol!!!<br/>
+  <button (click)="onSelectPlayer(crossPlayer)" class="btn btn-primary">{{crossPlayer.playerName}}</button>
+  <button (click)="onSelectPlayer(circlePlayer)" class="btn btn-success">{{circlePlayer.playerName}}</button>
 </div>
 <div *ngIf="selectedPlayer">
-  <button (click)="reset()">Reset</button>
+  <button (click)="reset()" class="btn btn-warning">Reset</button>
   <br/> Selected Symbol is {{selectedPlayer.playerName}}
   <br/>
   <app-board [boardData]="board" [selectedPlayer]="selectedPlayer" [canInteract]="canInteract()"></app-board>
